@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+
+   <style>
+      body {
+         font-size: 16px;
+      }
+      .container {
+         padding: 10px;
+      }
+      h2 {
+         font-family: "Ubuntu";
+      }
+      #resultForm {
+         font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+         border-collapse: collapse;
+         width: 100%;
+      }
+      
+      #resultForm td, #resultForm th {
+         border: 1px solid #ddd;
+         padding: 8px;
+      }
+      
+      #resultForm tr:nth-child(even){background-color: #f2f2f2;}
+      
+      #resultForm tr:hover {background-color: #ddd;}
+      
+      #resultForm th {
+         padding-top: 12px;
+         padding-bottom: 12px;
+         text-align: left;
+         background-color: #4CAF50;
+         color: white;
+      }
+
+      #total {
+         float: right;
+         margin-top: 20px;
+         padding: 0 250px;
+         font-size: 22px;
+         font-weight: bold;
+      }
+      #total span {
+         color: #4CAF50;
+      }
+      .buttons {
+         margin: 20px auto;
+      }
+
+      .buttons button {
+         padding: 8px;
+         font-size: 18px;
+         background: #4c69af;
+         color: #fff;
+         border: 0 none;
+         border-radius: 8px;
+      }
+      .buttons button:hover {
+         cursor: pointer;
+         background: #3a5491;
+      }
+      </style>
+      </head>
+
+      <body>
+         <div class="container">
+
+            <h2>Formulation for {{ animal_type }}</h2>
+            <hr>
+            <p>{{ ingredient }}</p>
+            <div>
+            <table id="resultForm">
+            <tr>
+               <th>Ingredients</th>
+               <th>Quantity</th>
+               <th>Price</th>
+               <th>Cost</th>
+            </tr>
+            {% for var_name,  var in collection.items(): %}
+            <tr>
+               <td>{{ var[0], var_name[0] }}</td>
+               <td>{{ var_name[1] }}</td>
+               <td>{{ var[1] }}</td>
+               <td>{{ var_name[1] * var[1]}}</td>
+               {% endfor %}
+            </tr>            
+            </table>
+         
+         <div id="total">
+            Total: <span>{{ objValue }}</span>
+         </div>
+         <div class="buttons">
+            <button value="Print result" onclick="window.print()">Print result</button>
+            <button id="cls" onclick="close()" value="Exit">Close</button>
+         </div>
+      </div>
+
+      <script>
+         var closeBtn = document.querySelector('#cls');
+         closeBtn.addEventListener('click', function() {
+            window.location.href = "http://localhost:5000/form";
+         }) 
+      </script>
+   </body>
+</html>

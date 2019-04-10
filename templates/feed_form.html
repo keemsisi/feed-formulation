@@ -1,0 +1,131 @@
+<html>
+   <head>
+      <title>Feed Formulation Software</title>
+      <style>
+         body {
+            font-size: 18px;
+         }
+         #nav {
+            padding: 15px;
+            -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
+            -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
+            margin-bottom: 50px;
+         }
+         h2 {
+            font-family: "Ubuntu";
+         }
+         #ingredients {
+            display: flex;
+            flex-direction : column ;
+            flex-wrap : wrap ;
+         }
+         select {
+            font-size: 16px;
+            padding: 5px;
+            width: 100px;
+         }
+         p > input {
+            color: #f5f5f5;
+            border: 0 none;
+            border-radius: 8px;
+            background: #4CAF50
+         }
+         p > input:hover {
+            cursor: pointer;
+            background: rgb(54, 143, 57);
+         }
+         h3 {
+            padding: 10px;
+         }
+         div > label > h3 {
+            background: #f5f5f5;
+         }
+      </style>
+   </head>
+   <body>
+      <div id="nav">
+         <h2>Feed formulator</h2>
+      </div>
+      <form action = "http://localhost:5000/result" method = "POST">
+         <label for="animal">Select Animal</label>
+         <select name="animal" id="animal" onchange="generateType(this.id, 'animal_type')">
+            <option selected="true" disabled>Select...</option>
+            <option value="Broiler">Broiler</option>
+            <!--<option value="Pig">Pig</option>-->
+         </select> | |
+         <label for="type">Select Animal type:</label>
+         <select name="animal_type" id="animal_type" required="required">
+            <!--<option value="Pig">Pig</option>-->
+         </select> | |
+         <label for="type">Weight:</label>
+         <input type="text" name="weight" id="weight" required="required" placeholder="Enter weight">
+         <br><br>
+         <hr>
+         <div><label for="ingredients"><h3>Select ingredients</h3></label><br/></div>
+         <div id="ingredients">
+            <div class="ingredients">
+               <input name="Maize" type="checkbox">Maize <br/>
+               <input name="Soybean_meal" type="checkbox">Soybean meal <br/>
+               <!--<input name="GNC" type="checkbox">GNC<br/>-->
+               <input name="Oyster_shell" type="checkbox">Oyster shell <br/>
+               <input name="Bone_meal" type="checkbox">Bone meal <br/>
+               <!--<input name="Fish_meal" type="checkbox">Fish meal <br/>-->
+               <input name="Salt" type="checkbox">Table salt <br/>
+               <input name="Lysine" type="checkbox">Lysine <br/>
+               <input name="Methionine" type="checkbox">Methionine <br/>
+               <!--<input name="Premix" type="checkbox">Broiler Premix <br/>-->
+               <input name="Wheat_bran" type="checkbox">Wheat Bran<br/>
+               <!--<input name="Lime_stone" type="checkbox">Lime Stone<br/>-->
+               <!--<input name="PKC" type="checkbox">PKC<br/>-->
+               <!--<input name="Methionine" type="checkbox">Methionine<br/>-->
+               <input name="Premix" type="checkbox">Broiler Premix<br/>
+               <input name="Salt" type="checkbox">Salt<br/>
+
+            </div>
+            <!--<div class="ingredients">-->
+               <!--<input name="guinea_corn" type="checkbox">Guinea Corn <br/>-->
+               <!--<input name="millet" type="checkbox">Millet <br/>-->
+               <!--<input name="sorghum_offal" type="checkbox">Sorghum Offal <br/>-->
+               <!--<input name="maize_offal" type="checkbox">Maize Offal <br/>-->
+               <!--<input name="meat_meal" type="checkbox">Meat meal <br/>-->
+               <!--<input name="blood_meal" type="checkbox">Blood meal <br/>-->
+               <!--<input name="peanut_meal" type="checkbox">Peanut meal <br/>-->
+               <!--<input name="groundnut_cake" type="checkbox">Groundnut cake <br/>-->
+               <!--<input name="milk_powder" type="checkbox">Milk Powder <br/>-->
+               <!--<input name="yeast" type="checkbox">Yeast <br/>-->
+            <!--</div>-->
+            <!--<div class="ingredients">-->
+               <!--<input name="wheat_offal" type="checkbox">Wheat Offals <br/>-->
+               <!--<input name="palm_kernel_meal" type="checkbox">Palm Kernel meal <br/>-->
+               <!--<input name="sorghum_offal" type="checkbox">Sorghum Offal <br/>-->
+               <!--<input name="limestone" type="checkbox">Limestone <br/>-->
+               <!--<input name="palm_oil" type="checkbox">Palm Oil <br/>-->
+               <!--<input name="bromin" type="checkbox">Bromin <br/>-->
+               <!--<input name="curatox" type="checkbox">Curatox <br/>-->
+            <!--</div>-->
+         </div>
+
+         <p><input style="padding: 8px; font-size: 18px;" type = "submit" value = "Submit" /></p>
+      </form>
+      <script>
+         function generateType(name, type) {
+            let animalName = document.getElementById(name);
+            var animalType = document.getElementById(type);
+            animalType.innerHTML = "";
+            if (animalName.value == "Broiler") {
+               var typeArray = ["|", "Starter|Broiler Starter", "Finisher|Broiler Finisher", "Layer|Layer"];
+            }
+            console.log(animalType)
+            for (let type in typeArray) {
+               let pair = typeArray[type].split("|");
+               let typeOption = document.createElement("option");
+               typeOption.value = pair[0];
+               typeOption.innerHTML = pair[1];
+               console.log(animalType);
+               animalType.options.add(typeOption);
+            }
+         }
+      </script>
+   </body>
+</html>
