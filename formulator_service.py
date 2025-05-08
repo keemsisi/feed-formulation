@@ -10,9 +10,9 @@ ANIMAL_FEED_REQUIREMENT_DB = {
         "ME": 2826.39,
         "table_salt": 0.3,
         "broiler_premix": 0.3
-    }, # end broiler_starter nutrient requirement
-    
-    "broiler_finisher":{
+    },  # end broiler_starter nutrient requirement
+
+    "broiler_finisher": {
         "crude_protein": 19.25,
         "fats": 3.51,
         "crude_fibre": 4.11,
@@ -23,10 +23,10 @@ ANIMAL_FEED_REQUIREMENT_DB = {
         "ME": 2766.67,
         "table_salt": 0.3,
         "broiler_premix": 0.3
-    }, # end broiler_finisher nutrient requirement
+    },  # end broiler_finisher nutrient requirement
 }
 
-#Ingredients price dict
+# Ingredients price dict
 INGREDIENT_PRICE = {
     "maize": 58,
     "soyabean": 150,
