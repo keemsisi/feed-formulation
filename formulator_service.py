@@ -110,6 +110,7 @@ INGREDIENT_DB = {
         "methionine": 0.0,
         "ME": 0.0
     },
+
     "methionine": {
         "crude_protein": 60,
         "fats": 0.0,
@@ -120,6 +121,7 @@ INGREDIENT_DB = {
         "methionine": 100,
         "ME": 0.0
     },
+    
     "broiler_premix": {
         "crude_protein": 0.0,
         "fats": 0.0,
